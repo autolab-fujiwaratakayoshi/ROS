@@ -1,0 +1,10 @@
+<launch>
+	<arg name="model" default="$(find autoarm_description)/urdf/autoarm.urdf"/>
+	<arg name="gui" default="True" />
+	<param name="robot_description" textfile="$(arg model)" />
+	<param name="use_gui" value="$(arg gui)"/>
+        <node name="joy" pkg="joy" type="joy_node" />
+	<node name="co_joint_state_publisher" pkg="autoarm_description" type="co_joint_state_publisher.py" />
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+	<node name="rviz" pkg="rviz" type="rviz" required="true" />
+</launch>
